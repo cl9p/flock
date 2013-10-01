@@ -7,7 +7,7 @@ class User
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-
+  
   ## Database authenticatable
   field :email,              :type => String, :default => ""
   field :encrypted_password, :type => String, :default => ""
@@ -47,4 +47,14 @@ class User
   field :name, :type => String
   validates_presence_of :name
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :created_at, :updated_at
+  
+  class << self
+      def current_user=(user)
+        Thread.current[:current_user] = user
+      end
+
+      def current_user
+        Thread.current[:current_user]
+      end
+    end
 end

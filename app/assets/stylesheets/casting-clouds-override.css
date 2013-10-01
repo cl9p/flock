@@ -1,0 +1,217 @@
+@import url(http://fonts.googleapis.com/css?family=Lustria|Cabin|Cabin+Sketch|Luckiest+Guy);
+
+/*
+font-family: 'Lustria', serif;
+font-family: 'Cabin', sans-serif;
+font-family: 'Cabin Sketch', cursive;
+font-family: 'Luckiest Guy', cursive;
+*/
+
+.superfont {
+    font-family: 'Luckiest Guy', cursive;
+    font-size: 72pt;
+}
+
+#lego-blue-4 {
+    position: relative;
+}
+
+#login-container{
+   position: absolute;
+   top: 50%;
+   margin-top: -200px;/* half of #content height*/
+   left: 0;
+   width: 100%;
+   z-index: 100;
+}
+
+#login-content {
+   width: 400px;
+   margin-left: auto;
+   margin-right: auto;
+   height: 395px;
+   -moz-border-radius: 5px;
+	border-radius: 5px;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-top: 10px;
+    background-color: white;
+	border: 2px solid #c7c8ca;
+    position: relative;
+}
+
+.form-signin-heading {
+	margin-bottom: 20px;
+}
+
+.form-signin {
+	background-color: white;
+}
+
+#placeholder {
+    clear: both;
+	margin-top: 40px;
+    width: 320px;
+    height: 240px;
+    margin-right: -150px;
+    float: right;
+    z-index: -1;
+    opacity: 0.2;
+    position: relative;
+}
+
+.form-signin input[type="email"] {
+    margin-top: -1px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-width: 1px;
+}
+.form-signin input[type="password"] {
+    border-top-width: 1px;
+    margin-bottom: 10px;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.register {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin-bottom: 5px;
+    margin-right: 15px;
+}
+
+@font-face {
+  font-family: 'MuseoSlabThin';
+  src: url('museo_slab_300-webfont.eot');
+  src: url('museo_slab_300-webfont.eot?#iefix') format('embedded-opentype'), 
+	   url('museo_slab_300-webfont.ttf') format('truetype'); 
+}
+
+@font-face {
+  font-family: 'MuseoSlabThick';
+  src: url('proximanova-webfont.eot');
+  src: url('proximanova-webfont.eot?#iefix') format('embedded-opentype'), 
+	   url('proximanova-webfont.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'ProximaNova';
+  src: url('museo_slab_500-webfont.eot');
+  src: url('museo_slab_500-webfont.eot?#iefix') format('embedded-opentype'), 
+	   url('museo_slab_500-webfont.ttf') format('truetype'); 
+}
+
+html,
+body {
+  height: 100%;
+  /* The html and body elements cannot have any padding or margin. */
+}
+
+div.navbar.navbar-fixed-bottom {
+  font-family: MuseoSlabThin, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: #1eb0f0;
+  height: 30px;
+  padding-top: 10px;
+}
+
+/* Wrapper for page content to push down footer */
+#wrap {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  /* Negative indent footer by it's height */
+  margin: 0 auto -30px;
+  padding: 0 0 30px;
+}
+
+pre {
+  max-height: 200px !important;
+  overflow: scroll;
+}
+
+p.credit {
+  font-family: MuseoSlabThin, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: white;  
+}
+
+img {
+    float: right;
+    margin-top: -40px;
+}
+
+/* Lastly, apply responsive CSS fixes as necessary */
+@media (max-width: 767px) {
+  #footer {
+    margin-left: -20px;
+    margin-right: -20px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+#execution_response {
+	margin-top: 10px;
+	padding-top: 5px;
+	border-top: 1px solid #eeeeee;
+}
+
+#wrap > .container {
+  padding: 60px 15px 0;
+  max-width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .modal-dialog {
+    right: auto;
+    left: 50%;
+    width: 80%;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-left: -40%;
+  }
+  .modal-content {
+    -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  }
+}
+div#workflowModal {    
+    width: 80%;
+    margin-left: -40%;
+    left: 50%;
+}
+
+div.page-header {
+	margin-top: -20px;
+}
+
+div.flock-content {
+	background: white;
+}
+
+.list-group-flush {
+	margin-top: 0px;
+}
+
+.list-group-item {
+	padding-right: 5px;
+}
+
+.cl9p-panel-heading {
+	font-family: MuseoSlabThick, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    padding: 10px 15px;
+    margin: -15px -15px 0px;
+    font-size: 12px;
+    font-weight: 500;
+    background-color: #f5f5f5;
+    border-bottom: none;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+}
+
+.cl9p-li {
+	font-family: MuseoSlabThick, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 12px;
+	font-weight: 500;
+}

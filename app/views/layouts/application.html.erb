@@ -1,25 +1,130 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Casting Clouds - Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Flock" %></title>
-    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Flock" %>">
-    <%= stylesheet_link_tag "application", :media => "all" %>
-    <%= javascript_include_tag "application" %>
-    <%= csrf_meta_tags %>
-    <%= yield(:head) %>
-  </head>
-  <body class="<%= controller_name %> <%= action_name %>">
-    <div id="container" class="container">
-      <header>
-        <%= render 'layouts/navigation' %>
-        <%= render 'layouts/messages' %>
-      </header>
-      <div id="main" role="main">
-        <%= yield %>
-      </div>
-      <footer>
-      </footer>
-    </div> <!--! end of #container -->
-  </body>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	<meta name="robots" content="index,follow" />
+    <!-- Loading Bootstrap -->
+	<%= stylesheet_link_tag "css/bootstrap", :media => "all" %>
+
+    <!-- Loading Flat UI -->
+	<%= stylesheet_link_tag "flat-ui", :media => "all" %>
+	<%= stylesheet_link_tag "spaces", :media => "all" %>
+	<%= stylesheet_link_tag "casting-clouds-override", :media => "all" %>
+</head>
+<body>
+    <div id="wrap">
+	    <!-- Fixed navbar -->
+	    <div class="navbar navbar-inverse navbar-fixed-top">
+	      <div class="container">
+	        <div class="navbar-inner">
+	          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	          </button>
+	          <a class="navbar-brand" href="#">Flock</a>
+	        </div>
+	        <div class="navbar-collapse collapse in">
+	          <ul class="nav">
+	            <li class="active"><a href="#">Home</a></li>
+	            <li><a href="#about">About</a></li>
+	            <li><a href="#contact">Contact</a></li>
+	            <li>
+	              <a href="#" data-toggle="dropdown">Manage <b class="caret"></b></a>
+	              <ul>
+	                <li><a href="#">Machines</a></li>
+	                <li><a href="#">Commands</a></li>
+	                <li><a href="#">Workflows</a></li>
+	              </ul>
+	            </li>
+	          </ul>
+	          <ul class="nav navbar-nav navbar-right">
+			    <% if user_signed_in? %>
+				  <li><%=link_to User.current_user.name, edit_user_registration_path %></li>
+			      <li>
+			      <%= link_to 'Logout', destroy_user_session_path, :method=>'delete', :class => 'active' %>
+			      </li>
+			    <% else %>
+			      <li>
+			      <%= link_to 'Login', new_user_session_path, :class => 'active' %>
+			      </li>
+			    <% end %>
+	          </ul>
+	        </div><!--/.nav-collapse -->
+	      </div>
+	    </div>
+		
+		<div class="container">
+		<%= render 'layouts/messages' %>
+      	<%= yield %>
+		</div>
+     </div>
+     <div class="navbar navbar-fixed-bottom cl9p">
+       <div class="container">
+         <p class="credit">&copy; 2013 Cloud Nine Partners LLC &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a><%= image_tag "cloud_nine_partners-small-300.png", :class => "footer-logo", :align => "bottom", :width => "80px" %></p>
+       </div>
+     </div>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+	<%= javascript_include_tag "application" %>
+	<%= javascript_include_tag "jquery.ui.touch-punch.min" %>
+	<%= javascript_include_tag "bootstrap.min" %>
+	<%= javascript_include_tag "bootstrap-select" %>
+	<%= javascript_include_tag "flatui-checkbox" %>
+	<%= javascript_include_tag "flatui-radio" %>
+	<%= javascript_include_tag "bootstrap-switch" %>
+	<%= javascript_include_tag "jquery.tagsinput" %>
+	<%= javascript_include_tag "jquery.placeholder" %>
+	<%= javascript_include_tag "jquery.stacktable" %>
+	<%= javascript_include_tag "jquery.scrollTo.min" %>
+	<%= javascript_include_tag "jquery.localScroll" %>
+	<%= javascript_include_tag "greensock/TweenMax.min" %>
+	<%= javascript_include_tag "jquery.lettering-0.6.1.min" %>
+	<%= javascript_include_tag "jquery.superscrollorama" %>
+    <script type="text/javascript">
+        $(function(){
+            $('#content .section ul li a').bind('click', function(e) {
+                e.preventDefault();
+                console.log("back to top");
+                $('body').scrollTo(0, 1000);
+            });
+
+            $('#topbar ul li a').bind('click', function(e) {
+                e.preventDefault();
+                target = this.hash;
+                console.log(target);
+                $.scrollTo(target, 1000);
+            });
+
+        });
+
+        var controller = $.superscrollorama({
+            triggerAtCenter: true,
+            playoutAnimations: true
+        });
+
+        function resizeDiv() {
+            vpw = $(window).width();
+            vph = $(window).height();
+            $('.section').css({'height': vph + 'px'});
+        }
+
+        window.onresize = function(event) {
+            resizeDiv();
+            controller.triggerCheckAnim();
+        }
+
+        jQuery(document).ready(function() {
+            resizeDiv();
+            vph = $(window).height();
+            controller.addTween('#lego-blue-4', TweenMax.to($('#lego-blue-4'), 2, {left:'632px', top:'100px'}));
+            controller.addTween('#animate', TweenMax.fromTo($('#animate'), 1.5 , {css:{opacity:0,'letter-spacing':'30px'}, immediateRender:true, ease:Quad.easeInOut}, {css:{opacity:1, 'letter-spacing':'0px'}, ease:Quad.easeInOut}), 0, 100);
+        });
+    </script>
+</body>
 </html>

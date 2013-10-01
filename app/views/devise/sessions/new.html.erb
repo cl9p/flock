@@ -1,0 +1,28 @@
+
+<div id="login-container">
+	
+  <div id="login-content">
+	  <div class="form-signin-heading"><h3>login</h3></div>
+      <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), html: {class: 'form-signin'}) do |f| %>
+          
+		  <%= f.email_field :email, :autofocus => true, :class => "form-control", :placeholder => 'email address' %>
+          <%= f.password_field :password, :class => "form-control", :placeholder => 'password' %>
+		  <% if devise_mapping.rememberable? -%>
+          <label class="checkbox" for="remember-me">
+			  <input type="checkbox" value="remember_me" id="remember-me" data-toggle="checkbox">
+              Remember Me
+          </label>
+		  <% end -%>
+          <%= f.submit "sign in", :class => 'btn btn-lg btn-primary btn-block' %>
+      <% end %>
+      <span style="float: right; padding-top: 10px">
+          <a href="forgot-password">forgot password?</a>
+      </span>
+      <span class="register">
+		  <h6><%= link_to 'register for &#946;'.html_safe, new_user_registration_path %></h6>
+      </span>
+      <div id="placeholder">
+		  <%= image_tag "casting-clouds-icon-grey.png"%>
+      </div>
+  </div>
+</div>
