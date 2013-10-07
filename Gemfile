@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '1.9.3'
+#ruby '1.9.3'
 gem 'rails', '3.2.13'
 #gem 'jruby-openssl'
 group :assets do
@@ -13,6 +13,7 @@ gem 'devise'
 gem 'figaro'
 gem 'mongoid'
 gem 'mizuno'
+gem 'docker-api'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :rbx]

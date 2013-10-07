@@ -11,3 +11,5 @@ puts 'DEFAULT USERS'
 #user = User.create! :name => ENV['ADMIN_NAME'].dup, :email => ENV['ADMIN_EMAIL'].dup, :password => ENV['ADMIN_PASSWORD'].dup, :password_confirmation => ENV['ADMIN_PASSWORD'].dup
 user = User.create! :name => "Lee Faus", :email => "lee@cloudninepartners.com", :password => "password", :password_confirmation => "password"
 puts 'user: ' << user.name
+project = Project.create! :name => "Flock", :platform => "Amazon", :location => "EAST"
+puts 'project: ' << project.name
