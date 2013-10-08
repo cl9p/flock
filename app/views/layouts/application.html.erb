@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Casting Clouds - Login</title>
+    <title>Casting Clouds</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 	<meta name="keywords" content="" />
@@ -83,6 +83,9 @@
     <script type="text/javascript">
         jQuery(document).ready(function() {
 			$("select").selectpicker({style: 'btn-sm btn-primary', menuStyle: 'dropdown-inverse'});
+			$('[data-toggle="checkbox"]').each(function () {
+			  $(this).checkbox();
+			});
 		});
     </script>
 </body>

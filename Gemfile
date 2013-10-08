@@ -8,6 +8,7 @@ group :assets do
   gem 'therubyrhino'
   gem 'uglifier', '>= 1.0.3'
 end
+gem 'simple_form'
 gem 'jquery-rails'
 gem 'devise'
 gem 'figaro'

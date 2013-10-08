@@ -3,7 +3,7 @@
 		<div class="cl9p-panel-heading">Recently Added Templates<span class="glyphicon glyphicon-list pull-right">&nbsp;</span></div>
 		<ul class="list-group list-group-flush">
 			<% @templates.each do |template| %>
-			<li class="list-group-item cl9p-li"><%= image_tag "#{template.bullet}", :width => "16px" %><%= link_to "#{template.name}", "/templates/#{template._id}"%></li>
+			<li class="list-group-item cl9p-li"><%= image_tag "#{template.provider.bullet}", :width => "16px" %><%= link_to "#{template.name}", "/templates/#{template._id}"%></li>
 			<% end %>
 		</ul>
 	</div>
