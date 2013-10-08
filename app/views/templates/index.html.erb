@@ -24,7 +24,7 @@
 			  <td><%= template.version %></td>
 			  <td><%= template.container_support %></td>
 				  
-		    <td><%= link_to 'Show', template %>&nbsp;<%= link_to 'Edit', edit_template_path(template) %>&nbsp;<%= link_to 'Destroy', template, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+		    <td><%= link_to 'show', template %>|<%= link_to 'edit', edit_template_path(template) %>|<%= link_to 'destroy', template, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 		  </tr>
 		<% end %>
 		</tbody>

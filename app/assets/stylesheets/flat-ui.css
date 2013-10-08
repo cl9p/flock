@@ -4907,8 +4907,8 @@ a.list-group-item.active > .badge,
   position: relative;
   text-align: left;
   width: 80px;
-  -webkit-mask: url('../images/switch/mask.png') 0 0 no-repeat;
-  mask: url('../images/switch/mask.png') 0 0 no-repeat;
+  -webkit-mask: url('switch/mask.png') 0 0 no-repeat;
+  mask: url('switch/mask.png') 0 0 no-repeat;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -5009,8 +5009,8 @@ a.list-group-item.active > .badge,
 }
 .switch-square {
   border-radius: 0px;
-  -webkit-mask: url('../images/switch/mask.png') 0 0 no-repeat;
-  mask: url('../images/switch/mask.png') 0 0 no-repeat;
+  -webkit-mask: url('switch/mask.png') 0 0 no-repeat;
+  mask: url('switch/mask.png') 0 0 no-repeat;
 }
 .switch-square > div.switch-off label {
   border-color: #828282;

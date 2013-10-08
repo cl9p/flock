@@ -69,62 +69,21 @@
          <p class="credit">&copy; 2013 Cloud Nine Partners LLC &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a><%= image_tag "cloud_nine_partners-small-300.png", :class => "footer-logo", :align => "bottom", :width => "80px" %></p>
        </div>
      </div>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
-	<%= javascript_include_tag "application" %>
 	<%= javascript_include_tag "jquery.ui.touch-punch.min" %>
 	<%= javascript_include_tag "bootstrap.min" %>
 	<%= javascript_include_tag "bootstrap-select" %>
+	<%= javascript_include_tag "bootstrap-switch" %>
 	<%= javascript_include_tag "flatui-checkbox" %>
 	<%= javascript_include_tag "flatui-radio" %>
-	<%= javascript_include_tag "bootstrap-switch" %>
 	<%= javascript_include_tag "jquery.tagsinput" %>
 	<%= javascript_include_tag "jquery.placeholder" %>
-	<%= javascript_include_tag "jquery.stacktable" %>
-	<%= javascript_include_tag "jquery.scrollTo.min" %>
-	<%= javascript_include_tag "jquery.localScroll" %>
-	<%= javascript_include_tag "greensock/TweenMax.min" %>
-	<%= javascript_include_tag "jquery.lettering-0.6.1.min" %>
-	<%= javascript_include_tag "jquery.superscrollorama" %>
+	<%= javascript_include_tag "application" %>
     <script type="text/javascript">
-        $(function(){
-            $('#content .section ul li a').bind('click', function(e) {
-                e.preventDefault();
-                console.log("back to top");
-                $('body').scrollTo(0, 1000);
-            });
-
-            $('#topbar ul li a').bind('click', function(e) {
-                e.preventDefault();
-                target = this.hash;
-                console.log(target);
-                $.scrollTo(target, 1000);
-            });
-
-        });
-
-        var controller = $.superscrollorama({
-            triggerAtCenter: true,
-            playoutAnimations: true
-        });
-
-        function resizeDiv() {
-            vpw = $(window).width();
-            vph = $(window).height();
-            $('.section').css({'height': vph + 'px'});
-        }
-
-        window.onresize = function(event) {
-            resizeDiv();
-            controller.triggerCheckAnim();
-        }
-
         jQuery(document).ready(function() {
-            resizeDiv();
-            vph = $(window).height();
-            controller.addTween('#lego-blue-4', TweenMax.to($('#lego-blue-4'), 2, {left:'632px', top:'100px'}));
-            controller.addTween('#animate', TweenMax.fromTo($('#animate'), 1.5 , {css:{opacity:0,'letter-spacing':'30px'}, immediateRender:true, ease:Quad.easeInOut}, {css:{opacity:1, 'letter-spacing':'0px'}, ease:Quad.easeInOut}), 0, 100);
-        });
+			$("select").selectpicker({style: 'btn-sm btn-primary', menuStyle: 'dropdown-inverse'});
+		});
     </script>
 </body>
 </html>
