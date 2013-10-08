@@ -1,4 +1,5 @@
 Flock::Application.routes.draw do
+
   devise_for :users do 
     get 'sign_out' => 'devise/sessions#sign_out' 
   end
@@ -13,7 +14,9 @@ Flock::Application.routes.draw do
   
   devise_for :users
   devise_for :projects
+  devise_for :templates
   
   resources :users
   resources :projects
+  resources :templates
 end

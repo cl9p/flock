@@ -1,0 +1,60 @@
+<%= form_for(@template, html: {class: "form-horizontal", role: "form"}) do |f| %>
+	<% if @template.errors.any? %>
+		<div id="error_explanation">
+			<h2><%= pluralize(@template.errors.count, "error") %> prohibited this template from being saved:</h2>
+			<ul>
+				<% @template.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+	<div class="form-group">
+		<%= f.label :name, 'name', :class => "col-lg-3 control-label" %>
+		<div class="col-lg-5">
+			<%= f.text_field :name, :class => "form-control input-sm" %>
+		</div>
+	</div>
+	<div class="form-group">
+		<%= f.label :image_location, 'image location', :class => "col-lg-3 control-label" %>
+		<div class="col-lg-5">
+			<%= f.text_field :image_location, :class => "form-control input-sm" %>
+		</div>
+	</div>
+	<div class="form-group">
+		<%= f.label :provider, 'provider', :class => "col-lg-3 control-label" %>
+		<div class="col-lg-5">
+			<%= f.text_field :provider, :class => "form-control input-sm" %>
+		</div>
+	</div>
+	<div class="form-group">
+		<%= f.label :os_name, 'os', :class => "col-lg-3 control-label" %>
+		<div class="col-lg-5">
+			<%= f.text_field :os_name, :class => "form-control input-sm" %>
+		</div>
+	</div>
+	<div class="form-group">
+		<%= f.label :os_version, 'os version', :class => "col-lg-3 control-label" %>
+		<div class="col-lg-5">
+			<%= f.text_field :os_version, :class => "form-control input-sm" %>
+		</div>
+	</div>
+	<div class="form-group">
+		<%= f.label :container_support, 'container support', :class => "col-lg-3 control-label" %>
+		<div class="col-lg-5">
+			<%= f.text_field :container_support, :class => "form-control input-sm" %>
+		</div>
+	</div>
+	<div class="form-group">
+		<%= f.label :version, 'version', :class => "col-lg-3 control-label" %>
+		<div class="col-lg-5">
+			<%= f.text_field :version, :class => "form-control input-sm" %>
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-lg-offset-3 col-lg-5">
+	    <%= f.submit "submit", :class => "btn btn-sm btn-primary" %>
+		</div>
+	</div>
+<% end %>
+

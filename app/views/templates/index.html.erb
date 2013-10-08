@@ -1,0 +1,35 @@
+<%= render 'templates/leftnav' %>
+<div class="col col-lg-9 flock-content">
+		<h3>available templates</h3>
+
+		<div class="table-responsive">
+			        	<table class="table table-striped table-hover">
+
+			<thead>
+              <tr>
+                <th>Name</th>
+                <th>Provider</th>
+                <th>OS</th>
+				<th>Version</th>
+				<th>Containers</th>
+				<th></th>
+              </tr>
+	  </thead>
+		  <tbody>
+		<% @templates.each do |template| %>
+		  <tr>
+			  <td><%= template.name %></td>
+			  <td><%= template.provider %></td>
+			  <td><%= template.os_name %>/<%= template.os_version %></td>
+			  <td><%= template.version %></td>
+			  <td><%= template.container_support %></td>
+				  
+		    <td><%= link_to 'Show', template %>&nbsp;<%= link_to 'Edit', edit_template_path(template) %>&nbsp;<%= link_to 'Destroy', template, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+		  </tr>
+		<% end %>
+		</tbody>
+		</table>
+	</div>
+
+		<h4><%= link_to 'new template', new_template_path %></h4>
+</div>

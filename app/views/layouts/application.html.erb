@@ -31,12 +31,13 @@
 	        </div>
 	        <div class="navbar-collapse collapse in">
 	          <ul class="nav">
-	            <li class="active"><a href="#">Home</a></li>
+	            <li><a href="#">Home</a></li>
 	            <li><a href="#about">About</a></li>
 	            <li><a href="#contact">Contact</a></li>
 	            <li>
 	              <a href="#" data-toggle="dropdown">Manage <b class="caret"></b></a>
 	              <ul>
+					<li><a href="/templates">Templates</a></li>
 	                <li><a href="#">Machines</a></li>
 	                <li><a href="#">Commands</a></li>
 	                <li><a href="#">Workflows</a></li>
@@ -45,7 +46,7 @@
 	          </ul>
 	          <ul class="nav navbar-nav navbar-right">
 			    <% if user_signed_in? %>
-				  <li><%=link_to User.current_user.name, edit_user_registration_path %></li>
+				  <li class="active"><%=link_to User.current_user.name, edit_user_registration_path %></li>
 			      <li>
 			      <%= link_to 'Logout', destroy_user_session_path, :method=>'delete', :class => 'active' %>
 			      </li>
@@ -60,7 +61,6 @@
 	    </div>
 		
 		<div class="container">
-		<%= render 'layouts/messages' %>
       	<%= yield %>
 		</div>
      </div>

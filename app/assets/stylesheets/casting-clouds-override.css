@@ -136,7 +136,7 @@ p.credit {
   color: white;  
 }
 
-img {
+.cl9p-panel-heading img {
     float: right;
     margin-top: -40px;
 }
@@ -188,6 +188,7 @@ div.page-header {
 
 div.flock-content {
 	background: white;
+	padding-top: 10px;
 }
 
 .list-group-flush {
@@ -195,23 +196,62 @@ div.flock-content {
 }
 
 .list-group-item {
-	padding-right: 5px;
+	padding-right: 15px;
 }
 
 .cl9p-panel-heading {
-	font-family: MuseoSlabThick, "Helvetica Neue", Helvetica, Arial, sans-serif;
     padding: 10px 15px;
-    margin: -15px -15px 0px;
     font-size: 12px;
     font-weight: 500;
-    background-color: #f5f5f5;
-    border-bottom: none;
+    background-color: #dddddd;
     border-top-right-radius: 3px;
     border-top-left-radius: 3px;
 }
 
+.panel {
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+	border: 1px #dddddd solid;
+}
+
+.cl9p-li img {
+    margin-top: -2px;
+	margin-right: 10px;
+}
+
+a.list-group-item:hover, a.list-group-item:focus {
+	text-decoration: none;
+	background-color: #fafafa;
+}
+
 .cl9p-li {
-	font-family: MuseoSlabThick, "Helvetica Neue", Helvetica, Arial, sans-serif;
-	font-size: 12px;
+	font-size: 14px;
 	font-weight: 500;
+}
+
+.left-nav-search {
+	margin-bottom: 0px;
+}
+
+.control-label {
+	font-size: 16px;
+	font-weight: 600;
+}
+
+.cl9p-left-panels {
+	padding-top: 20px;
+}
+
+.flock-content h3 {
+	border-bottom: 1px #dddddd solid;
+	margin-bottom: 20px;
+}
+
+input[type="text"]:disabled {
+	color: #2f2f2f;
+}
+
+.footer-logo {
+	float: right;
+	margin-top: -40px;
 }

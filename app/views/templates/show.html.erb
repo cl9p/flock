@@ -1,0 +1,13 @@
+<%= render 'templates/leftnav' %>
+<div class="col col-lg-9 flock-content">
+		<p id="notice"><%= notice %></p>
+		<h3>showing template [<%= @template.name %>]</h3>
+		<%= render 'form_disabled' %>
+		<h4><%= link_to 'Edit', edit_template_path(@template) %> |
+		<%= link_to 'Back', templates_path %></h4>
+		
+</div>
+
+
+
+
