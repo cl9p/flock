@@ -69,8 +69,8 @@ class MachinesController < ApplicationController
     vm = VIM::InventoryNavigator.new(root_folder).searchManagedEntity("VirtualMachine", "docker")
     folder = VIM::InventoryNavigator.new(root_folder).searchManagedEntity("Folder", "development")
     config_spec = VIM::VirtualMachineConfigSpec.new
-    config_spec.setNumCPUs(2)
-    config_spec.setMemoryMB(2048)
+    config_spec.setNumCPUs(@machine.configuration.cpu)
+    config_spec.setMemoryMB(@machine.configuration.memory)
     vm_clone_spec = VIM::VirtualMachineCloneSpec.new
     vm_relocate_spec = VIM::VirtualMachineRelocateSpec.new
     vm_clone_spec.setLocation(vm_relocate_spec)
