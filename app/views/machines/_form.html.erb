@@ -1,0 +1,54 @@
+<%= simple_form_for @machine, html: {class: 'form-horizontal', role: 'form'} do |f| %>
+	<% if @machine.errors.any? %>
+		<div id="error_explanation">
+			<h2><%= pluralize(@machine.errors.count, "error") %> prohibited this machine from being saved:</h2>
+			<ul>
+				<% @machine.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+	<div class="form-group">
+		<%= f.label :name, 'name', class: 'col-lg-3 control-label' %>
+		<div class='col-lg-5'>
+			<%= f.input_field :name, class: 'form-control input-sm' %>
+		</div>
+	</div>
+	<div class="form-group">
+		<%= f.label :template, 'template', :class => "col-lg-3 control-label" %>
+		<div class="col-lg-5">
+			<%= f.collection_select :template_id, @templates, :_id, :name, {prompt: 'Select Template'} %>
+		</div>
+	</div>
+	<div class="form-group">
+		<%= f.label :configuration, 'configuration', :class => "col-lg-3 control-label" %>
+		<div class="col-lg-5">
+			<%= f.collection_select :configuration_id, Configuration.all, :_id, :name, {prompt: 'Select Configuration'} %>
+		</div>
+	</div>
+	<div class="form-group">
+		<%= f.label :uname, 'username', :class => "col-lg-3 control-label" %>
+		<div class="col-lg-5">
+			<%= f.input_field :uname, :class => "form-control input-sm" %>
+		</div>
+	</div>
+	<div class="form-group">
+		<%= f.label :pword, 'password', :class => "col-lg-3 control-label" %>
+		<div class="col-lg-5">
+			<%= f.input_field :pword, :class => "form-control input-sm" %>
+		</div>
+	</div>
+	<div class="form-group">
+		<%= f.label :tags, 'tags', :class => "col-lg-3 control-label" %>
+		<div class="col-lg-5">
+			<input name="machine[tags]" class="tagsinput tagsinput-primary" value="<%= @machine.tags %>" />	
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-lg-offset-3 col-lg-5">
+	    <%= f.submit 'submit', :class => 'btn btn-sm btn-primary' %>
+		</div>
+	</div>
+<% end %>
+

@@ -1,0 +1,31 @@
+<%= render 'machines/leftnav' %>
+<div class="col col-sm-9 flock-content">
+	<h3>available machines</h3>
+	<div class="table-responsive">
+		<table class="table table-striped table-hover">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Template</th>
+					<th>Configuration</th>
+					<th>IP</th>
+					<th>User</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+			<% @machines.each do |machine| %>
+				<tr>
+					<td><%= machine.name %></td>
+					<td><%= machine.template.name %></td>
+					<td><%= machine.configuration.name %></td>
+					<td><%= machine.ip_addr %></td>
+					<td><%= machine.uname %></td>
+					<td><%= link_to 'show', machine %>|<%= link_to 'edit', edit_machine_path(machine) %>|<%= link_to 'destroy', machine, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+				</tr>
+			<% end %>
+			</tbody>
+		</table>
+	</div>
+	<h4><%= link_to 'new machine', new_machine_path %></h4>
+</div>

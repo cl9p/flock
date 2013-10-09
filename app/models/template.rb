@@ -1,19 +1,20 @@
 class Template
   include Mongoid::Document
   include Mongoid::Timestamps
-  
+
   has_and_belongs_to_many :configurations, inverse_of: nil
+  has_many :machines
   belongs_to :provider
-  
+
   field :name, :type => String
   field :image_location, :type => String
   field :os_name, :type => String
   field :os_version, :type => String
   field :container_support, :type => Boolean
   field :version, :type => String
-  
+
   attr_accessible :created_at, :updated_at
-   
+ 
 end
 
 class Provider

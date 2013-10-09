@@ -2376,7 +2376,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .tagsinput {
   background: white;
   border: 2px solid #ebebeb;
-  border-radius: 6px;
+  border-radius: 0px;
   height: 100px;
   margin-bottom: 18px;
   padding: 6px 1px 1px 6px;
@@ -2384,7 +2384,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   text-align: left;
 }
 .tagsinput .tag {
-  border-radius: 4px;
+  border-radius: 2px;
   background-color: #ebebeb;
   color: #7e7e7e;
   cursor: pointer;

@@ -1,5 +1,11 @@
 Flock::Application.routes.draw do
 
+  resources :containers
+
+
+  resources :machines
+
+
   devise_for :users do 
     get 'sign_out' => 'devise/sessions#sign_out' 
   end

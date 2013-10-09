@@ -2376,7 +2376,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .tagsinput {
   background: white;
   border: 2px solid #ebebeb;
-  border-radius: 6px;
+  border-radius: 0px;
   height: 100px;
   margin-bottom: 18px;
   padding: 6px 1px 1px 6px;
@@ -2384,7 +2384,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   text-align: left;
 }
 .tagsinput .tag {
-  border-radius: 4px;
+  border-radius: 2px;
   background-color: #ebebeb;
   color: #7e7e7e;
   cursor: pointer;
@@ -4907,8 +4907,8 @@ a.list-group-item.active > .badge,
   position: relative;
   text-align: left;
   width: 80px;
-  -webkit-mask: url('switch/mask.png') 0 0 no-repeat;
-  mask: url('switch/mask.png') 0 0 no-repeat;
+  -webkit-mask: url('../images/switch/mask.png') 0 0 no-repeat;
+  mask: url('../images/switch/mask.png') 0 0 no-repeat;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -5009,8 +5009,8 @@ a.list-group-item.active > .badge,
 }
 .switch-square {
   border-radius: 0px;
-  -webkit-mask: url('switch/mask.png') 0 0 no-repeat;
-  mask: url('switch/mask.png') 0 0 no-repeat;
+  -webkit-mask: url('../images/switch/mask.png') 0 0 no-repeat;
+  mask: url('../images/switch/mask.png') 0 0 no-repeat;
 }
 .switch-square > div.switch-off label {
   border-color: #828282;
