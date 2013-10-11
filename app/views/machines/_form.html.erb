@@ -18,7 +18,7 @@
 	<div class="form-group">
 		<%= f.label :template, 'template', :class => "col-lg-3 control-label" %>
 		<div class="col-lg-5">
-			<%= f.collection_select :template_id, @templates, :_id, :name, {prompt: 'Select Template'} %>
+			<%= f.collection_select :template_id, @templates, :_id, :name_type, {prompt: 'Select Template'} %>
 		</div>
 	</div>
 	<div class="form-group">

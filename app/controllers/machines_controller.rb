@@ -14,6 +14,8 @@ module VIM
 end
 
 class MachinesController < ApplicationController
+  before_filter :authenticate_user!
+  
   # GET /machines
   # GET /machines.json
   def index
@@ -62,25 +64,10 @@ class MachinesController < ApplicationController
   def create
     @machine = Machine.new(params[:machine])
     
-    # Do Some Magic
-    url = URL.new('https://10.0.1.10/sdk')
-    service_instance = VIM::ServiceInstance.new(url, 'root', 'password', true)
-    root_folder = service_instance.getRootFolder
-    vm = VIM::InventoryNavigator.new(root_folder).searchManagedEntity("VirtualMachine", "docker")
-    folder = VIM::InventoryNavigator.new(root_folder).searchManagedEntity("Folder", "development")
-    config_spec = VIM::VirtualMachineConfigSpec.new
-    config_spec.setNumCPUs(@machine.configuration.cpu)
-    config_spec.setMemoryMB(@machine.configuration.memory)
-    vm_clone_spec = VIM::VirtualMachineCloneSpec.new
-    vm_relocate_spec = VIM::VirtualMachineRelocateSpec.new
-    vm_clone_spec.setLocation(vm_relocate_spec)
-    vm_clone_spec.setPowerOn(false)
-    vm_clone_spec.setTemplate(false)
-    vm_clone_spec.setConfig(config_spec)
-    clone_task = vm.cloneVM_Task(folder, @machine.name, vm_clone_spec)
     
     respond_to do |format|
       if @machine.save
+        self.send("provision_#{@machine.template._type.downcase}")
         format.html { redirect_to @machine, notice: 'Machine was successfully created.' }
         format.json { render json: @machine, status: :created, location: @machine }
       else
@@ -88,7 +75,6 @@ class MachinesController < ApplicationController
         format.json { render json: @machine.errors, status: :unprocessable_entity }
       end
     end
-    service_instance.getServerConnection.logout
   end
 
   # PUT /machines/1
@@ -117,5 +103,34 @@ class MachinesController < ApplicationController
       format.html { redirect_to machines_url }
       format.json { head :no_content }
     end
+  end
+  
+  def provision_vmware
+    # Do Some Magic
+    url = URL.new("https://#{@machine.template.vcenter_host}/sdk")
+    service_instance = VIM::ServiceInstance.new(url, @machine.template.vcenter_user_name, @machine.template.vcenter_password, true)
+    root_folder = service_instance.getRootFolder
+    vm = VIM::InventoryNavigator.new(root_folder).searchManagedEntity("VirtualMachine", @machine.template.base_image_name)
+    folder = VIM::InventoryNavigator.new(root_folder).searchManagedEntity("Folder", @machine.template.clone_to_location)
+    config_spec = VIM::VirtualMachineConfigSpec.new
+    config_spec.setNumCPUs(@machine.configuration.cpu)
+    config_spec.setMemoryMB(@machine.configuration.memory)
+    vm_clone_spec = VIM::VirtualMachineCloneSpec.new
+    vm_relocate_spec = VIM::VirtualMachineRelocateSpec.new
+    vm_clone_spec.setLocation(vm_relocate_spec)
+    vm_clone_spec.setPowerOn(false)
+    vm_clone_spec.setTemplate(false)
+    vm_clone_spec.setConfig(config_spec)
+    clone_task = vm.cloneVM_Task(folder, @machine.name, vm_clone_spec) 
+    service_instance.getServerConnection.logout   
+  end
+  
+  def provision_amazon 
+    ec2 = AWS::EC2.new(:access_key_id => @machine.template.amazon_access_key, :secret_access_key => @machine.template.amazon_secret_key)
+    ec2.instances.create :image_id => @machine.template.ami_id
+  end
+  
+  def provision_rackspace 
+    
   end
 end

@@ -2,7 +2,7 @@
 <div class="col col-sm-9 flock-content">
 		<p id="notice"><%= notice %></p>
 		<h3>showing template [<%= @template.name %>]</h3>
-		<%= render 'form_disabled' %>
+		<%= render "#{@template._type.downcase}_form" %>
 		<h4><%= link_to 'edit', edit_template_path(@template) %> |
 		<%= link_to 'back', templates_path %></h4>
 		

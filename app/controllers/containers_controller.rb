@@ -1,4 +1,6 @@
 class ContainersController < ApplicationController
+  before_filter :authenticate_user!
+  
   # GET /containers
   # GET /containers.json
   def index

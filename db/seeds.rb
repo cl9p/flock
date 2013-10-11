@@ -13,7 +13,6 @@ user = User.create! :name => "Lee Faus", :email => "lee@cloudninepartners.com", 
 puts 'user: ' << user.name
 project = Project.create! :name => "Flock", :platform => "Amazon", :location => "EAST"
 
-
 configuration_1 = Configuration.create! :name => "x-small", :cpu => 1, :memory => 256, :disk_size => 1024
 configuration_2 = Configuration.create! :name => "small", :cpu => 2, :memory => 512, :disk_size => 2048
 configuration_3 = Configuration.create! :name => "medium", :cpu => 2, :memory => 1024, :disk_size => 4096
@@ -21,17 +20,13 @@ configuration_4 = Configuration.create! :name => "large", :cpu => 4, :memory => 
 configuration_5 = Configuration.create! :name => "x-large", :cpu => 4, :memory => 4096, :disk_size => 16384
 configuration_6 = Configuration.create! :name => "xx-large", :cpu => 8, :memory => 8192, :disk_size => 32768
 
-provider_1 = Provider.create! :name => "vmware", :view_name => "VMware"
-provider_2 = Provider.create! :name => "amazon", :view_name => "Amazon Web Services"
-provider_3 = Provider.create! :name => "openstack", :view_name => "OpenStack"
-provider_4 = Provider.create! :name => "rackspace", :view_name => "RackSpace"
+template_1 = VMware.create! :name => "docker-base", :os_name => "ubuntu", :os_version => "13.04", :container_support => true, :version => "1.0.10", :vcenter_host => "10.0.1.10", :vcenter_user_name => "root", :vcenter_password => "password", :base_image_name => "docker", :clone_to_location => "development"
+template_1.configurations = [configuration_3, configuration_4, configuration_5, configuration_6]
+template_1.save!
+puts template_1.name
+template_2 = Amazon.create! :name => "docker-base", :os_name => "ubuntu", :os_version => "13.04", :container_support => true, :version => "1.0.10", :amazon_access_key => "AKIAJPFXLSET4DKRHPDA", :amazon_secret_key => "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", :ami_id => "ami-bd0959d4"
+template_2.configurations = [configuration_1, configuration_2, configuration_3]
+template_2.save
+puts template_2.name
 
-template = Template.new :image_location => "/root/golden_images/ubuntu-13.04", :provider => provider_1, :name => "ubuntu-jeos", :os_name => "ubuntu", :os_version => "13.04", :container_support => true, :version => "1.0.10"
-template.configurations = [configuration_3, configuration_4, configuration_5, configuration_6]
-template.save!
-puts 'template: ' << template.os_name
-puts "template:configs #{template.configurations.inspect}"
-puts "template:provider #{template.provider.inspect}" 
-template = Template.create! :image_location => "/root/golden_images/ubuntu-13.04", :provider => provider_2, :name => "ubuntu-docker", :os_name => "ubuntu", :os_version => "13.04", :container_support => true, :version => "1.0.10"
-template = Template.create! :image_location => "/root/golden_images/ubuntu-13.04", :provider => provider_4, :name => "fedora-web-php", :os_name => "fedora", :os_version => "19", :container_support => true, :version => "1.0.10"
-template = Template.create! :image_location => "/root/golden_images/ubuntu-13.04", :provider => provider_3, :name => "centos-java7", :os_name => "centos", :os_version => "6.4", :container_support => true, :version => "1.0.10"
+

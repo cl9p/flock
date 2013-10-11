@@ -17,7 +17,7 @@
 			<% @templates.each do |template| %>
 				<tr>
 					<td><%= template.name %></td>
-					<td><%= template.provider.name %></td>
+					<td><%= template._type %></td>
 					<td><%= template.os_name %>/<%= template.os_version %></td>
 					<td><%= template.version %></td>
 					<td><%= template.container_support %></td>

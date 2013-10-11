@@ -4,29 +4,54 @@ class Template
 
   has_and_belongs_to_many :configurations, inverse_of: nil
   has_many :machines
-  belongs_to :provider
 
   field :name, :type => String
-  field :image_location, :type => String
   field :os_name, :type => String
   field :os_version, :type => String
   field :container_support, :type => Boolean
   field :version, :type => String
-
-  attr_accessible :created_at, :updated_at
+  
+  def bullet
+    return "#{_type.downcase}.png"
+  end
+  
+  def name_type
+    return "#{name}-#{_type.downcase}"
+  end
  
 end
 
-class Provider
-  include Mongoid::Document
-  has_many :templates
+class Amazon < Template
+  field :amazon_access_key, :type => String
+  field :amazon_secret_key, :type => String
+  field :ami_id, :type => String
   
-  field :name, :type => String
-  field :view_name, :type => String
-  
-  def bullet
-    return "#{name}.png"
+  def self.model_name
+      Template.model_name
   end
+end
+
+class VMware < Template
+  field :vcenter_host, :type => String
+  field :vcenter_user_name, :type => String
+  field :vcenter_password, :type => String
+  field :base_image_name, :type => String
+  field :clone_to_location, :type => String
+  
+  def self.model_name
+      Template.model_name
+  end
+end
+
+class RackSpace < Template
+  field :image_id, :type => String
+  field :rackspace_access_key, :type => String
+  field :rackspace_secret_key, :type => String
+  
+  def self.model_name
+      Template.model_name
+  end
+  
 end
 
 class Configuration

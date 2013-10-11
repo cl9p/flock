@@ -1,0 +1,78 @@
+<%= simple_form_for @template, html: {class: 'form-horizontal', role: 'form'} do |f| %>
+	<% if @template.errors.any? %>
+		<div id="error_explanation">
+			<h2><%= pluralize(@template.errors.count, "error") %> prohibited this template from being saved:</h2>
+			<ul>
+				<% @template.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+	<div class="form-group">
+		<%= f.label :name, 'name', class: 'col-lg-3 control-label' %>
+		<div class='col-lg-5'>
+			<%= f.input_field :name, class: 'form-control input-sm' %>
+		</div>
+	</div>
+	<div class="form-group">
+		<%= f.label :configurations, 'configurations', :class => "col-lg-3 control-label" %>
+		<div class="col-lg-5">
+			<%= f.collection_check_boxes :configuration_ids, Configuration.all, :_id, :name, {:item_wrapper_class => 'checkbox cl9p-checkbox'}, {:"data-toggle" => 'checkbox'} %>
+		</div>
+	</div>
+	<div class="form-group">
+		<%= f.label :os_name, 'os name', :class => "col-lg-3 control-label" %>
+		<div class="col-lg-5">
+			<%= f.input_field :os_name, :class => "form-control input-sm" %>
+		</div>
+	</div>
+	<div class="form-group">
+		<%= f.label :os_version, 'os version', :class => "col-lg-3 control-label" %>
+		<div class="col-lg-5">
+			<%= f.input_field :os_version, :class => "form-control input-sm" %>
+		</div>
+	</div>
+	<div class="form-group">
+		<%= f.label :container_support, 'container support', :class => "col-lg-3 control-label" %>
+		<div class="col-lg-5">
+			<div class="switch switch-square"
+			  data-on-label="<i class='fui-check'></i>"
+			  data-off-label="<i class='fui-cross'></i>">
+			  <%= f.check_box :container_support %>
+			</div>
+		</div>
+	</div>
+	<div class="form-group">
+		<%= f.label :version, 'version', :class => "col-lg-3 control-label" %>
+		<div class="col-lg-5">
+			<%= f.input_field :version, :class => "form-control input-sm" %>
+		</div>
+	</div>
+	<h5><%= @template._type.downcase%> specifics</h5>
+	<div class="form-group">
+		<%= f.label :amazon_access_key, 'access key', :class => "col-lg-3 control-label" %>
+		<div class="col-lg-5">
+			<%= f.input_field :amazon_access_key, :class => "form-control input-sm" %>
+		</div>
+	</div>
+	<div class="form-group">
+		<%= f.label :amazon_secret_key, 'secret key', :class => "col-lg-3 control-label" %>
+		<div class="col-lg-5">
+			<%= f.input_field :amazon_secret_key, :class => "form-control input-sm" %>
+		</div>
+	</div>
+	<div class="form-group">
+		<%= f.label :ami_id, 'ami', :class => "col-lg-3 control-label" %>
+		<div class="col-lg-5">
+			<%= f.input_field :ami_id, :class => "form-control input-sm" %>
+		</div>
+	</div>
+	
+	<div class="form-group">
+		<div class="col-lg-offset-3 col-lg-5">
+	    <%= f.submit 'submit', :class => 'btn btn-sm btn-primary' %>
+		</div>
+	</div>
+<% end %>
+

@@ -3,7 +3,7 @@
 		<div class="cl9p-panel-heading">Recently Added Machines<span class="glyphicon glyphicon-list pull-right">&nbsp;</span></div>
 		<ul class="list-group list-group-flush">
 			<% @machines.each do |machine| %>
-				<li class="list-group-item cl9p-li"><%= image_tag "#{machine.template.provider.bullet}", :width => "16px" %><%= link_to "#{machine.name}", "/machine/#{machine._id}"%></li>
+				<li class="list-group-item cl9p-li"><%= image_tag "#{machine.template.bullet}", :width => "16px" %><%= link_to "#{machine.name}", "/machine/#{machine._id}"%></li>
 			<% end %>
 		</ul>
 	</div>
