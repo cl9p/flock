@@ -33,6 +33,7 @@ class MachinesController < ApplicationController
     @machine = Machine.find(params[:id])
     @machines = Machine.all
     @templates = Template.all
+    @disabled = true
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @machine }
@@ -118,11 +119,26 @@ class MachinesController < ApplicationController
     vm_clone_spec = VIM::VirtualMachineCloneSpec.new
     vm_relocate_spec = VIM::VirtualMachineRelocateSpec.new
     vm_clone_spec.setLocation(vm_relocate_spec)
-    vm_clone_spec.setPowerOn(false)
+    vm_clone_spec.setPowerOn(true)
     vm_clone_spec.setTemplate(false)
     vm_clone_spec.setConfig(config_spec)
-    clone_task = vm.cloneVM_Task(folder, @machine.name, vm_clone_spec) 
-    service_instance.getServerConnection.logout   
+    clone_task = vm.cloneVM_Task(folder, @machine.name, vm_clone_spec)
+    Thread.new {
+      EM.run {
+        EM.add_periodic_timer(10) do
+          puts "Trying to get IP ADDR again!"
+          new_vm = VIM::InventoryNavigator.new(root_folder).searchManagedEntity("VirtualMachine", @machine.name)
+          if ((new_vm != nil) and (new_vm.getGuest.getIpAddress != nil))
+            ip_addr = new_vm.getGuest.getIpAddress
+            puts "IP_ADDR = #{ip_addr}"
+            @machine.ip_addr = ip_addr
+            @machine.save!
+            service_instance.getServerConnection.logout  
+            EM.stop
+          end
+        end
+      } 
+    }
   end
   
   def provision_amazon 
