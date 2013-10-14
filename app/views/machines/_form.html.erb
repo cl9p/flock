@@ -18,21 +18,13 @@
 	<div class="form-group">
 		<%= f.label :template, 'template', :class => "col-lg-3 control-label" %>
 		<div class="col-lg-5">
-			<% if @disabled %>
-				<%= f.collection_select :template_id, @templates, :_id, :name_type, {prompt: 'Select Template'}, {disabled: 'disabled'} %>
-			<% else %>
-				<%= f.collection_select :template_id, @templates, :_id, :name_type, {prompt: 'Select Template'} %>
-			<% end %>
+			<%= f.collection_select :template_id, @templates, :_id, :name_type, {prompt: 'Select Template'}, {:disabled => @disabled} %>
 		</div>
 	</div>
 	<div class="form-group">
 		<%= f.label :configuration, 'configuration', :class => "col-lg-3 control-label" %>
 		<div class="col-lg-5">
-			<% if @disabled %>
-				<%= f.collection_select :configuration_id, Configuration.all, :_id, :name, {prompt: 'Select Configuration'}, {disabled: 'disabled'}  %>
-			<% else %>
-				<%= f.collection_select :configuration_id, Configuration.all, :_id, :name, {prompt: 'Select Configuration'}  %>
-			<% end %>
+			<%= f.collection_select :configuration_id, Configuration.all, :_id, :name, {prompt: 'Select Configuration'}, {:disabled => @disabled}  %>
 		</div>
 	</div>
 	<div class="form-group">
@@ -52,7 +44,7 @@
 	<div class="form-group">
 		<%= f.label :tags, 'tags', :class => "col-lg-3 control-label" %>
 		<div class="col-lg-5">
-			<input name="machine[tags]" class="tagsinput tagsinput-primary" value="<%= @machine.tags %>" disabled='true'/>	
+			<input name="machine[tags]" class="tagsinput tagsinput-primary" value="<%= @machine.tags %>"/>	
 		</div>
 	</div>
 	<% if !@disabled %>
